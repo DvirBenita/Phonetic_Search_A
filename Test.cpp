@@ -239,3 +239,24 @@ TEST_CASE("Mix of Test replacement") // 10 tests
     CHECK_THROWS_AS(find(text, "don"), std::exception);
     CHECK_THROWS_AS(find(text, "happ"), std::exception);
 }
+
+TEST_CASE("Mix of Test replacement") // 10 tests
+{
+    string text = "harri putter and the corsed child";
+
+    //lower-case
+    CHECK(find(text, "harry") == string("harri"));
+    CHECK(find(text, "potter") == string("putter"));
+    CHECK(find(text, "and") == string("and"));
+    CHECK(find(text, "cursed") == string("corsed"));
+
+    //upper-case
+    CHECK(find(text, "HarrY") == string("harri"));
+    CHECK(find(text, "POTTER") == string("putter"));
+    CHECK(find(text, "AnD") == string("and"));
+    CHECK(find(text, "CURsed") == string("corsed"));
+
+    //throw - word isn't in the sentence
+    CHECK_THROWS_AS(find(text, "potte"), std::exception);
+    CHECK_THROWS_AS(find(text, "harr"), std::exception);
+}
